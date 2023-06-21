@@ -1,0 +1,29 @@
+<div class="container">
+  <h1 class="text-4xl font-bold text-black text-center mt-6">
+    Turno actual: {{ turn }}
+  </h1>
+  <div
+    class="grid grid-cols-[70px_70px_70px] items-center justify-center gap-2 my-10"
+  >
+    <div
+      *ngFor="let fill of board; let i = index"
+      class="h-[70px] flex justify-center items-center rounded-lg border-2 border-zinc-900 hover:cursor-pointer"
+      (click)="changeTurn(i)"
+    >
+      <span class="text-4xl">{{ fill }}</span>
+    </div>
+  </div>
+  <div
+    *ngIf="winner || endGame"
+    class="w-max mx-auto text-center p-4 text-lg text-green-500 rounded-lg bg-gray-700 drop-shadow-2xl"
+    role="alert"
+  >
+    <span class="font-bold"> {{ label }} </span><br />
+    <button
+      class="border border-green-300 text-green-500 rounded-lg mt-2 px-2 py-1 hover:bg-gray-800"
+      (click)="resetGame()"
+    >
+      Reset Game
+    </button>
+  </div>
+</div>
